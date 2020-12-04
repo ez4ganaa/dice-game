@@ -22,9 +22,36 @@ var diceDom = document.querySelector(".dice");
 diceDom.style.display = "none";
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
+// 1-6 доторх санаисаргүй нэг тоо гаргаж авна
     var diceNumber = Math.floor(Math.random() * 6) + 1;
+// 
     diceDom.style.display = "block";
+// Буусан тоо нь 1 ээс ялгаатай бол идэвхтэй тоглогчийн ээлжийн оноог солино
     diceDom.src = 'dice-' + diceNumber + ".png";
+if (diceNumber !== 1){
+
+    roundScore = roundScore + diceNumber;
+    document.getElementById("current-" + activePlayer).textContent = roundScore;
+} else {
+
+    roundScore = 0;
+    document.getElementById("current-" + activePlayer).textContent = 0;
+
+
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+
+// Улаан цэгийг шилжүүлэх
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+
+// шоог түр алга болгоно
+diceDom.style.display = "none";
+    // if(activePlayer === 0){
+    //     activePlayer = 1;
+    // } else {
+    //     activePlayer = 0;
+    // }
+}
 });
 
 document.querySelector(".btn-new").addEventListener("click", function() {
@@ -35,10 +62,10 @@ document.getElementById("current-1").textContent = 0 ;
 
     diceDom.style.display = "none";
 });
-document.querySelector(".btn-hold").addEventListener("click", function() {
-    document.getElementById("score-0").textContent += ;
-document.getElementById("score-1").textContent +=  ;
+// document.querySelector(".btn-hold").addEventListener("click", function() {
+//     document.getElementById("score-0").textContent += ;
+// document.getElementById("score-1").textContent +=  ;
 
-    diceDom.style.display = "none";
-});
+//     diceDom.style.display = "none";
+// });
 
