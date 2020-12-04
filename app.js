@@ -35,4 +35,10 @@ document.getElementById("current-1").textContent = 0 ;
 
     diceDom.style.display = "none";
 });
+document.querySelector(".btn-hold").addEventListener("click", function() {
+    document.getElementById("score-0").textContent += ;
+document.getElementById("score-1").textContent +=  ;
+
+    diceDom.style.display = "none";
+});
 
