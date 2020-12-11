@@ -1,4 +1,4 @@
-isNewGame;
+var isNewGame;
 // Тоглогчийн ээлжийг хадгалах хувьсагч, нэгдүгээр тоглогчийг 0, хоёрдугаар тоглогчийг 1 гэж тэмдэглэе
 var activePlayer;
 
@@ -8,19 +8,38 @@ var scores;
 // Тоглогчийн ээлжиндээ цуглуулж байгаа оноог хадгалах хувьсагч
 var roundScore;
 
-
-//Шооны альталаараа буусныг хадгалах хувьсагч хэрэгтэй , 1 6 гэсэн утгыг энэ хувьсагчид санамсаргүйгээр үүсгэж өгнө
-var diceNumber = Math.floor( Math.random() * 6) + 1;
-
-// Програм эхлэхэд бэлтгэе
-
-document.getElementById("score-0").textContent = 0 ;
-document.getElementById("score-1").textContent = 0 ;
-document.getElementById("current-0").textContent = 0 ;
-document.getElementById("current-1").textContent = 0 ;
-
 var diceDom = document.querySelector(".dice");
-diceDom.style.display = "none";
+
+initGame();
+
+function initGame(){
+    isNewGame = true;
+
+    activePlayer = 0;
+
+    scores = [0, 0];
+
+    roundScore = 0;
+
+    document.getElementById("score-0").textContent = 0 ;
+    document.getElementById("score-1").textContent = 0 ;
+    document.getElementById("current-0").textContent = 0 ;
+    document.getElementById("current-1").textContent = 0 ;
+
+    document.getElementById("name-0").textContent = "player 1";
+    document.getElementById("name-1").textContent = "player 2";
+
+    document.querySelector(".player-0-panel").classList.remove("winner");
+    document.querySelector(".player-1-panel").classList.remove("winner");
+
+    document.querySelector(".player-0-panel").classList.remove("active");
+    document.querySelector(".player-1-panel").classList.remove("active");
+
+    document.querySelector(".player-0-panel").classList.add("active");
+    
+    diceDom.style.display = "none";
+}
+
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
 if (isNewGame){
@@ -66,14 +85,9 @@ document.getElementById("score-" + activePlayer).textContent = scores[activePlay
  }
 
 });
-// document.querySelector(".btn-new").addEventListener("click", function() {
-//     document.getElementById("score-0").textContent = 0 ;
-// document.getElementById("score-1").textContent = 0 ;
-// document.getElementById("current-0").textContent = 0 ;
-// document.getElementById("current-1").textContent = 0 ;
-
-//     diceDom.style.display = "none";
-// });
+document.querySelector(".btn-new").addEventListener("click", function() {
+    initGame();
+});
 
 
 //энэ функц нь 
